@@ -12,7 +12,7 @@ import {
   createBottomTabNavigator,
   createAppContainer,
 } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import AddContactScreen from './screen/AddContactScreen';
 import SettingsScreen from './screen/SettingsScreen';
@@ -34,22 +34,6 @@ const MainStack = createStackNavigator(
   },
 );
 
-MainStack.navigationOptions = {
-  tabBarIcon: ({focused, tintColor}) => (
-    <Ionicons
-      name={`ios-contacts${focused ? '' : '-outline'}`}
-      size={25}
-      color={tintColor}
-    />
-  ),
-};
-
-// MainStack.navigationOptions = {
-//   tabBarIcon: ({focused, tintColor}) => (
-//     <Ionicons name={'ios-contacts'} size={25} color={tintColor} />
-//   ),
-// };
-
 const MainTabs = createBottomTabNavigator(
   {
     Contacts: MainStack,
@@ -59,6 +43,20 @@ const MainTabs = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: '#a41034',
     },
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({tintColor}) => {
+        const {routeName} = navigation.state;
+        let iconName;
+        if (routeName === 'Contacts') {
+          iconName = 'ios-contacts';
+        } else if (routeName === 'Settings') {
+          iconName = 'ios-options';
+        }
+
+        // You can return any component that you like here!
+        return <Ionicons name={iconName} size={25} color={tintColor} />;
+      },
+    }),
   },
 );
 
