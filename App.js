@@ -10,6 +10,7 @@ import React from 'react';
 import {
   createStackNavigator,
   createBottomTabNavigator,
+  createSwitchNavigator,
   createAppContainer,
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,6 +18,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AddContactScreen from './screen/AddContactScreen';
 import SettingsScreen from './screen/SettingsScreen';
 import ContactListScreen from './screen/ContactListScreen';
+import LoginScreen from './screen/LoginScreen';
 
 const MainStack = createStackNavigator(
   {
@@ -60,7 +62,12 @@ const MainTabs = createBottomTabNavigator(
   },
 );
 
-const AppContainer = createAppContainer(MainTabs);
+const AppNavigator = createSwitchNavigator({
+  Login: LoginScreen,
+  Main: MainTabs,
+});
+
+const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   render() {
