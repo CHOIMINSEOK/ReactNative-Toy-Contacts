@@ -8,6 +8,7 @@ export default class AddContactScreen extends React.Component {
   };
 
   handleSubmit = formState => {
+    // TODO: 연락처 추가 기능 구현
     this.props.navigation.navigate('ContactList');
   };
 

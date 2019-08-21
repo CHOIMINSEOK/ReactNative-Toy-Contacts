@@ -1,5 +1,7 @@
 import React from 'react';
 import {Button, View, StyleSheet, Text} from 'react-native';
+import contacts from '../contacts';
+import SectionListContacts from '../SectionListContacts';
 
 export default class ContactListScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -13,10 +15,28 @@ export default class ContactListScreen extends React.Component {
     ),
   });
 
+  state = {
+    showContacts: true,
+  };
+
+  toggleContacts = () => {
+    this.setState(prevState => ({showContacts: !prevState.showContacts}));
+  };
+
+  handleSelectContact = contact => {
+    //todo: show detail
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>ContactList</Text>
+        <Button title="toggle contacts" onPress={this.toggleContacts} />
+        {this.state.showContacts && (
+          <SectionListContacts
+            contacts={contacts}
+            onSelectContact={this.handleSelectContact}
+          />
+        )}
       </View>
     );
   }
@@ -25,7 +45,5 @@ export default class ContactListScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
