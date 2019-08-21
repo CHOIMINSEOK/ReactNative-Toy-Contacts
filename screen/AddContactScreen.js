@@ -1,13 +1,18 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import AddContactForm from '../AddContactForm';
 
 export default class AddContactScreen extends React.Component {
+  static navigationOptions = {
+    headerTitle: 'New Contact',
+  };
+
+  handleSubmit = formState => {
+    this.props.navigation.navigate('ContactList');
+  };
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Add Contact</Text>
-      </View>
-    );
+    return <AddContactForm onSubmit={this.handleSubmit} />;
   }
 }
 
