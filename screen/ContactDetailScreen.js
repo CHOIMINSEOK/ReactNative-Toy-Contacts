@@ -1,8 +1,16 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {View, Text} from 'react-native';
 
 export default class ContactDetailScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    headerTitle: navigation.getParam('name'),
+  })
+
   render() {
-    return <Text>ContactDetailScreen</Text>;
+    return (
+      <View>
+        <Text>{this.props.navigation.getParam('phone')}</Text>
+      </View>
+    );
   }
 }
