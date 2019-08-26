@@ -1,8 +1,9 @@
 import React from 'react';
 import {Button, View, StyleSheet, Text} from 'react-native';
 import SectionListContacts from '../SectionListContacts';
+import {connect} from 'react-redux';
 
-export default class ContactListScreen extends React.Component {
+class ContactListScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     headerTitle: 'Contacts',
     headerRight: (
@@ -30,12 +31,12 @@ export default class ContactListScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Button title="toggle contacts" onPress={this.toggleContacts} />
-        {/* {this.state.showContacts && (
+        {this.state.showContacts && (
           <SectionListContacts
-            contacts={contacts}
+            contacts={this.props.contacts}
             onSelectContact={this.handleSelectContact}
           />
-        )} */}
+        )}
       </View>
     );
   }
@@ -46,3 +47,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+const mapStateToProps = state => ({
+  contacts: state.contacts,
+})
+
+export default connect(mapStateToProps)(ContactListScreen)
