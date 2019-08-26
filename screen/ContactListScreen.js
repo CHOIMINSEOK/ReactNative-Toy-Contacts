@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button, View, StyleSheet, Text} from 'react-native';
-import contacts from '../contacts';
 import SectionListContacts from '../SectionListContacts';
 
 export default class ContactListScreen extends React.Component {
@@ -31,12 +30,12 @@ export default class ContactListScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Button title="toggle contacts" onPress={this.toggleContacts} />
-        {this.state.showContacts && (
+        {/* {this.state.showContacts && (
           <SectionListContacts
             contacts={contacts}
             onSelectContact={this.handleSelectContact}
           />
-        )}
+        )} */}
       </View>
     );
   }

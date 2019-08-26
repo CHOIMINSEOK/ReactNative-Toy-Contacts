@@ -21,6 +21,9 @@ import ContactListScreen from './screen/ContactListScreen';
 import LoginScreen from './screen/LoginScreen';
 import ContactDetailScreen from './screen/ContactDetailScreen';
 
+import {Provider} from 'react-redux';
+import store from './redux/store';
+
 const MainStack = createStackNavigator(
   {
     ContactList: ContactListScreen,
@@ -73,6 +76,10 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   render() {
-    return <AppContainer />;
+    return (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    )
   }
 }
