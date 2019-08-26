@@ -2,13 +2,16 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import AddContactForm from '../AddContactForm';
 
-export default class AddContactScreen extends React.Component {
+import {connect} from 'react-redux';
+import {addContact} from '../redux/actions';
+
+class AddContactScreen extends React.Component {
   static navigationOptions = {
     headerTitle: 'New Contact',
   };
 
   handleSubmit = formState => {
-    // TODO: 연락처 추가 기능 구현
+    this.props.addContact({name: formState.name, phone: formState.phone});
     this.props.navigation.navigate('ContactList');
   };
 
@@ -24,3 +27,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default connect(null, {addContact: addContact})(AddContactScreen);
