@@ -19,11 +19,13 @@ import AddContactScreen from './screen/AddContactScreen';
 import SettingsScreen from './screen/SettingsScreen';
 import ContactListScreen from './screen/ContactListScreen';
 import LoginScreen from './screen/LoginScreen';
+import ContactDetailScreen from './screen/ContactDetailScreen';
 
 const MainStack = createStackNavigator(
   {
     ContactList: ContactListScreen,
     AddContact: AddContactScreen,
+    ContactDetail: ContactDetailScreen,
   },
   {
     initialRouteName: 'ContactList',

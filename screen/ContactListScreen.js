@@ -24,7 +24,7 @@ export default class ContactListScreen extends React.Component {
   };
 
   handleSelectContact = contact => {
-    //todo: show detail
+    this.props.navigation.push('ContactDetail', contact);
   };
 
   render() {
