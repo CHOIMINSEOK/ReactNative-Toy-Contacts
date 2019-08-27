@@ -3,7 +3,7 @@ const processContact = contact => ({
   phone: contact.phone,
 });
 
-export const fetchUsejrs = async () => {
+export const fetchUsers = async () => {
   const response = await fetch('https://randomuser.me/api/?results=50&nat=us');
   const {results} = await response.json();
   return results.map(processContact);
